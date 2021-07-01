@@ -2,6 +2,7 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 
 public class UpdatedDropdown {
 
@@ -12,6 +13,20 @@ public class UpdatedDropdown {
 		
 		WebDriver driver =new ChromeDriver();
 		driver.get("https://rahulshettyacademy.com/dropdownsPractise/"); 
+		
+		//checkbox
+		Assert.assertFalse(driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).isSelected());
+		System.out.println(driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).isSelected());
+		driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).click();
+		System.out.println(driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).isSelected());
+		Assert.assertTrue(driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).isSelected());
+
+		
+		//no of checkboxes
+		System.out.println(driver.findElements(By.cssSelector("input[type='checkbox']")).size());
+		
+		
+		//Updated dropdown
 		driver.findElement(By.id("divpaxinfo")).click();
 		Thread.sleep(2000L);
 	/*	int i=1;	
@@ -25,6 +40,7 @@ public class UpdatedDropdown {
 		}
 		
 		driver.findElement(By.id("btnclosepaxoption")).click();
+		Assert.assertEquals(driver.findElement(By.id("divpaxinfo")).getText(), "5 Adult");
 		System.out.println(driver.findElement(By.id("divpaxinfo")).getText());
 		driver.close();
 		
