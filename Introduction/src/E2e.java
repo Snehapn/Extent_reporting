@@ -59,7 +59,6 @@ public class E2e {
 		
 		//click on search button
 		driver.findElement(By.xpath("//*[@id='ctl00_mainContent_btn_FindFlights']")).click();
-		
 		driver.close();
 	}
 
